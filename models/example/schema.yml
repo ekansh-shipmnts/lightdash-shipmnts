@@ -7,11 +7,11 @@ sources:
     tables:
       - name: shipments
       - name: companies
-      - name: company_groups_model
-      - name: user_accounts_model
-      - name: branch_accounts_model
-      - name: sales_hub_inquiries_model
-      - name: sales_people_model
+      - name: company_groups
+      - name: user_accounts
+      - name: branch_accounts
+      - name: sales_hub_inquiries
+      - name: sales_people
 
 models:
   - name: shipments_model
