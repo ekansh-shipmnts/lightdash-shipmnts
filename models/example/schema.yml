@@ -7,6 +7,11 @@ sources:
     tables:
       - name: shipments
       - name: companies
+      - name: company_groups_model
+      - name: user_accounts_model
+      - name: branch_accounts_model
+      - name: sales_hub_inquiries_model
+      - name: sales_people_model
 
 models:
   - name: shipments_model
@@ -363,7 +368,7 @@ models:
         description: "ID of the order from which this was split"
       - name: link_shipment_json
         description: "Linked shipment JSON (JSONB)"
-  - name: companies
+  - name: companies_model
     description: "Table containing company details."
     columns:
       - name: id
@@ -442,3 +447,189 @@ models:
         description: "Domain of the company."
       - name: color_code
         description: "Color code associated with the company."
+  
+  - name: company_groups_model
+    description: "Model for company groups table."
+    columns:
+      - name: id
+        description: "Primary key for the company groups table."
+      - name: name
+        description: "Name of the company group."
+      - name: tenant_id
+        description: "ID of the tenant."
+      - name: is_standard
+        description: "Indicates if the company group is standard."
+      - name: is_disabled
+        description: "Indicates if the company group is disabled."
+      - name: created_at
+        description: "Timestamp when the company group was created."
+      - name: updated_at
+        description: "Timestamp when the company group was last updated."
+  
+  - name: user_accounts_model
+    description: "Table containing user account details."
+    columns:
+      - name: id
+        description: "Primary key for the user accounts table."
+      - name: created_at
+        description: "Timestamp when the user account was created."
+      - name: updated_at
+        description: "Timestamp when the user account was last updated."
+      - name: tenant_id
+        description: "ID of the tenant."
+      - name: first_name
+        description: "First name of the user."
+      - name: last_name
+        description: "Last name of the user."
+      - name: email
+        description: "Email address of the user."
+      - name: username
+        description: "Username of the user."
+      - name: title
+        description: "Title of the user."
+      - name: department
+        description: "Department of the user."
+      - name: mobile_number
+        description: "Mobile number of the user."
+      - name: deleted_at
+        description: "Timestamp when the user account was deleted."
+      - name: disabled
+        description: "Indicates if the user account is disabled."
+      - name: user_level
+        description: "Level of the user."
+      - name: password_digest
+        description: "Password digest of the user."
+      - name: personal_email
+        description: "Personal email address of the user."
+      - name: email_verified
+        description: "Indicates if the email is verified."
+      - name: user_contact_id
+        description: "ID of the associated user contact."
+      - name: phone_number_verified
+        description: "Indicates if the phone number is verified."
+      - name: dial_code
+        description: "Dial code of the user's phone number."
+      - name: created_by_id
+        description: "ID of the user who created the account."
+      - name: role_id
+        description: "ID of the associated role."
+      - name: updated_by_id
+        description: "ID of the user who last updated the account."
+      - name: status
+        description: "Status of the user account."
+
+  - name: branch_accounts_model
+    description: "Table containing branch account details."
+    columns:
+      - name: id
+        description: "Primary key for the branch accounts table."
+      - name: created_at
+        description: "Timestamp when the branch account was created."
+      - name: updated_at
+        description: "Timestamp when the branch account was last updated."
+      - name: company_account_id
+        description: "ID of the associated company account."
+      - name: tenant_id
+        description: "ID of the tenant."
+      - name: entity_type
+        description: "Type of entity."
+      - name: address_types
+        description: "Types of addresses associated with the branch."
+      - name: name
+        description: "Name of the branch."
+      - name: address_line_1
+        description: "First line of the branch address."
+      - name: address_line_2
+        description: "Second line of the branch address."
+      - name: city
+        description: "City where the branch is located."
+      - name: state
+        description: "State where the branch is located."
+      - name: country
+        description: "Country where the branch is located."
+      - name: postal_code
+        description: "Postal code of the branch."
+      - name: contact_detail
+        description: "Contact details of the branch."
+      - name: tax_registration_type
+        description: "Type of tax registration."
+      - name: tax_registration_number
+        description: "Tax registration number of the branch."
+      - name: state_tax_code
+        description: "State tax code of the branch."
+      - name: consol_agent_registration_number
+        description: "Consolidation agent registration number."
+      - name: iata_account_number
+        description: "IATA account number."
+      - name: print_address
+        description: "Print address of the branch."
+      - name: erp_cost_center_id
+        description: "ERP cost center ID."
+      - name: default_address_id
+        description: "ID of the default address."
+      - name: cost_center_code
+        description: "Cost center code."
+      - name: pima_id
+        description: "PIMA ID."
+
+  - name: sales_hub_inquiries_model
+    description: "Table containing sales hub inquiry details."
+    columns:
+      - name: id
+        description: "Primary key for the sales hub inquiries table."
+      - name: inquiry_global_id
+        description: "Global ID of the inquiry."
+      - name: customer_company_id
+        description: "ID of the customer company."
+      - name: tenant_id
+        description: "ID of the tenant."
+      - name: customer_address_id
+        description: "ID of the customer address."
+      - name: involved_branch_id
+        description: "ID of the involved branch."
+      - name: created_at
+        description: "Timestamp when the inquiry was created."
+      - name: updated_at
+        description: "Timestamp when the inquiry was last updated."
+      - name: sales_person_id
+        description: "ID of the sales person."
+      - name: pricing_person_id
+        description: "ID of the pricing person."
+      - name: assigned_to_pricing_at
+        description: "Timestamp when assigned to pricing."
+      - name: trade_type
+        description: "Trade type of the inquiry."
+      - name: business_vertical_id
+        description: "ID of the business vertical."
+      - name: additional_loss_remarks
+        description: "Additional loss remarks."
+      - name: business_received_through
+        description: "Business received through."
+      - name: billing_party_id
+        description: "ID of the billing party."
+      - name: billing_party_address_id
+        description: "ID of the billing party address."
+      - name: collaborator_ids
+        description: "IDs of the collaborators."
+      - name: custom_field_values
+        description: "Custom field values."
+
+  - name: sales_people_model
+    description: "Table containing sales people details."
+    columns:
+      - name: id
+        description: "Primary key for the sales people table."
+      - name: name
+        description: "Name of the sales person."
+      - name: employee
+        description: "Employee status of the sales person."
+      - name: enable
+        description: "Indicates if the sales person is enabled."
+      - name: user_contact_id
+        description: "ID of the user contact."
+      - name: created_at
+        description: "Timestamp when the sales person was created."
+      - name: updated_at
+        description: "Timestamp when the sales person was last updated."
+      - name: tenant_id
+        description: "ID of the tenant."
