@@ -1,0 +1,39 @@
+# dbt_project.yaml
+
+name: 'lightdash-shipmnts'
+version: '1.0.0'
+profile: 'default'  # Update with your dbt profile name
+
+config-version: 2
+
+# Configuration for dbt models
+models:
+  my_project:
+    # The schema that dbt will create models in
+    my_project_schema: 'my_project_dbt'
+
+    # Set the dbt source for this project
+    sources:
+      - name: my_project_source
+        schema: 'my_project_source'
+        tables:
+          - name: users
+            identifier: user_id  # Primary key for this table
+
+# Lightdash configuration
+lightdash:
+  project:
+    name: 'my_lightdash_project'
+    models:
+      - name: 'users'
+        label: 'Users'
+        type: 'view'
+        description: 'Users data'
+        source: 'my_project.my_project_source'
+        tags: ['dimension']
+
+# dbt configurations
+vars:
+  env: dev  # You can define environment-specific variables here
+
+# Additional configurations as needed
