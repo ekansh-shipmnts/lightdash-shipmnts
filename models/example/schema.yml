@@ -575,9 +575,10 @@ models:
   - name: sales_hub_inquiries_model
     description: "Table containing sales hub inquiry details."
     meta:
-      joins: sales_people_model
-      label: 'Sales Hub Inquiries with Sales People'
-      sql_on: ${sales_people_model.id} = ${sales_hub_inquiries_model.sales_person_id}
+      joins: 
+        -join: sales_people_model
+        label: 'Sales Hub Inquiries with Sales People'
+        sql_on: ${sales_people_model.id} = ${sales_hub_inquiries_model.sales_person_id}
     columns:
       - name: id
         description: "Primary key for the sales hub inquiries table."
