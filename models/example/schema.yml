@@ -16,6 +16,8 @@ sources:
 models:
   - name: shipments_model
     description: "Table containing shipment details"
+    meta:
+      sql_filter: ${lightdash.attributes.tenant_id} = 6
     columns:
       - name: id
         description: "Primary key"
