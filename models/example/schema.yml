@@ -8,358 +8,437 @@ sources:
       - name: shipments
       - name: companies
 
-# models:
-#   - name: shipments_model
-#     description: "Table containing shipment details"
-#     columns:
-#       - name: id
-#         description: "Primary key"
-#         tests:
-#           - not_null
-#           - unique
-#       - name: master_shipment_id
-#         description: "ID of the master shipment"
-#       - name: tenant_id
-#         description: "ID of the tenant"
-#       - name: carrier_product
-#         description: "Carrier product"
-#       - name: incoterms
-#         description: "Incoterms"
-#       - name: estimated_time_of_departure
-#         description: "Estimated time of departure"
-#       - name: estimated_time_of_arrival
-#         description: "Estimated time of arrival"
-#       - name: freight_type
-#         description: "Type of freight"
-#       - name: trade_type
-#         description: "Type of trade"
-#       - name: load_type
-#         description: "Type of load"
-#       - name: status
-#         description: "Status of the shipment"
-#       - name: shipment_type
-#         description: "Type of shipment"
-#       - name: service_type
-#         description: "Type of service"
-#       - name: total_number_of_packages
-#         description: "Total number of packages"
-#       - name: gross_weight
-#         description: "Gross weight"
-#       - name: gross_volume
-#         description: "Gross volume"
-#       - name: chargeable_weight
-#         description: "Chargeable weight"
-#       - name: created_at
-#         description: "Timestamp when the record was created"
-#         tests:
-#           - not_null
-#       - name: updated_at
-#         description: "Timestamp when the record was last updated"
-#         tests:
-#           - not_null
-#       - name: commodity_description
-#         description: "Description of the commodity"
-#       - name: shipment_properties
-#         description: "Properties of the shipment (JSONB)"
-#       - name: job_number
-#         description: "Job number"
-#       - name: business_type
-#         description: "Type of business"
-#       - name: deleted_at
-#         description: "Timestamp when the record was deleted"
-#       - name: accounting_status
-#         description: "Accounting status"
-#       - name: involved_branch_id
-#         description: "ID of the involved branch"
-#       - name: port_of_loading_id
-#         description: "ID of the port of loading"
-#       - name: port_of_discharge_id
-#         description: "ID of the port of discharge"
-#       - name: place_of_carrier_receipt_id
-#         description: "ID of the place of carrier receipt"
-#       - name: place_of_carrier_delivery_id
-#         description: "ID of the place of carrier delivery"
-#       - name: carrier_id
-#         description: "ID of the carrier"
-#       - name: house_number_sequence_id
-#         description: "ID of the house number sequence"
-#       - name: commodity_type
-#         description: "Type of commodity"
-#       - name: short_product_description
-#         description: "Short description of the product"
-#       - name: shipment_number
-#         description: "Shipment number"
-#       - name: shipment_date
-#         description: "Date of shipment"
-#       - name: master_job_number
-#         description: "Master job number"
-#       - name: charge_terms
-#         description: "Charge terms (JSONB)"
-#       - name: services
-#         description: "Services (JSONB)"
-#       - name: next_house_shipment_count
-#         description: "Count of the next house shipment"
-#       - name: consol_type
-#         description: "Type of consolidation"
-#       - name: unbilled_income_count
-#         description: "Count of unbilled income"
-#       - name: billed_income_count
-#         description: "Count of billed income"
-#       - name: unbilled_expense_count
-#         description: "Count of unbilled expense"
-#       - name: billed_expense_count
-#         description: "Count of billed expense"
-#       - name: net_weight
-#         description: "Net weight"
-#       - name: booking_status
-#         description: "Status of the booking"
-#       - name: shipment_booking_number
-#         description: "Booking number of the shipment"
-#       - name: next_booking_actions
-#         description: "Next booking actions (array)"
-#       - name: volumetric_weight
-#         description: "Volumetric weight"
-#       - name: document_id
-#         description: "ID of the document"
-#       - name: final_place_of_delivery_id
-#         description: "ID of the final place of delivery"
-#       - name: ocean_vessel_id
-#         description: "ID of the ocean vessel"
-#       - name: vessel_name
-#         description: "Name of the vessel"
-#       - name: voyage_number
-#         description: "Voyage number"
-#       - name: received_for_shipment_by_forwarder_date
-#         description: "Date received for shipment by the forwarder"
-#       - name: received_for_shipment_by_shipping_line_date
-#         description: "Date received for shipment by the shipping line"
-#       - name: shipped_on_board_date
-#         description: "Date shipped on board"
-#       - name: final_place_of_delivery_print
-#         description: "Printed final place of delivery"
-#       - name: consignee_party_name
-#         description: "Name of the consignee party"
-#       - name: unbilled_sell_estimates_count
-#         description: "Count of unbilled sell estimates"
-#       - name: billed_sell_estimates_count
-#         description: "Count of billed sell estimates"
-#       - name: unbilled_buy_estimates_count
-#         description: "Count of unbilled buy estimates"
-#       - name: billed_buy_estimates_count
-#         description: "Count of billed buy estimates"
-#       - name: remarks
-#         description: "Remarks"
-#       - name: accessible_by_branches
-#         description: "Accessible by branches (array)"
-#       - name: estimated_time_of_arrival_at_fpod
-#         description: "Estimated time of arrival at FPOD"
-#       - name: port_of_discharge_terminal_id
-#         description: "ID of the port of discharge terminal"
-#       - name: place_of_carrier_delivery_terminal_id
-#         description: "ID of the place of carrier delivery terminal"
-#       - name: cancelled_at
-#         description: "Timestamp when the record was cancelled"
-#       - name: cancellation_marked_by_id
-#         description: "ID of the person who marked the cancellation"
-#       - name: cancellation_reason
-#         description: "Reason for cancellation"
-#       - name: cancelled_by
-#         description: "Cancelled by"
-#       - name: returned_from
-#         description: "Returned from"
-#       - name: job_date
-#         description: "Date of the job"
-#       - name: job_execution_date
-#         description: "Date of job execution"
-#       - name: sales_agent
-#         description: "Sales agent"
-#       - name: customer
-#         description: "Customer"
-#       - name: delivery_order_number
-#         description: "Delivery order number"
-#       - name: ocean_transport_order_id
-#         description: "ID of the ocean transport order"
-#       - name: independent_house_number
-#         description: "Independent house number"
-#       - name: stuffing_type
-#         description: "Type of stuffing"
-#       - name: stuffing_location_type
-#         description: "Type of stuffing location"
-#       - name: stuffing_location_id
-#         description: "ID of the stuffing location"
-#       - name: destuffing_type
-#         description: "Type of destuffing"
-#       - name: movement_type
-#         description: "Type of movement"
-#       - name: destuffing_location_type
-#         description: "Type of destuffing location"
-#       - name: destuffing_location_id
-#         description: "ID of the destuffing location"
-#       - name: closing_remarks
-#         description: "Closing remarks"
-#       - name: customer_company_id
-#         description: "ID of the customer company"
-#       - name: quotation_number
-#         description: "Quotation number"
-#       - name: is_from_consol_helper
-#         description: "Is from consolidation helper"
-#       - name: movement_location_id
-#         description: "ID of the movement location"
-#       - name: actual_time_of_arrival
-#         description: "Actual time of arrival"
-#       - name: actual_time_of_arrival_pocd
-#         description: "Actual time of arrival at POCD"
-#       - name: destination_last_inward_date
-#         description: "Destination last inward date"
-#       - name: pocd_last_inward_date
-#         description: "POCD last inward date"
-#       - name: ops_pre_alert_sent_date
-#         description: "Date OPS pre-alert sent"
-#       - name: created_from_message_id
-#         description: "ID of the message from which this record was created"
-#       - name: document_dispatch_mode
-#         description: "Document dispatch mode"
-#       - name: document_dispatch_date
-#         description: "Document dispatch date"
-#       - name: courier_company_id
-#         description: "ID of the courier company"
-#       - name: courier_tracking_no
-#         description: "Courier tracking number"
-#       - name: credit_status
-#         description: "Credit status"
-#       - name: carting_location_id
-#         description: "ID of the carting location"
-#       - name: atd_pol_date
-#         description: "ATD POL date"
-#       - name: atd_pcr_date
-#         description: "ATD PCR date"
-#       - name: lfd_at_carrier
-#         description: "LFD at carrier"
-#       - name: lfd_at_empty_return
-#         description: "LFD at empty return"
-#       - name: lfd_at_pod
-#         description: "LFD at POD"
-#       - name: lfd_at_pocd
-#         description: "LFD at POCD"
-#       - name: export_manifest_no
-#         description: "Export manifest number"
-#       - name: last_action_status
-#         description: "Status of the last action"
-#       - name: next_actions
-#         description: "Next actions (array)"
-#       - name: forwarding_invoice_status
-#         description: "Forwarding invoice status"
-#       - name: estimated_time_of_arrival_at_pcd
-#         description: "Estimated time of arrival at PCD"
-#       - name: purchase_order_number
-#         description: "Purchase order number"
-#       - name: port_of_loading_terminal_id
-#         description: "ID of the port of loading terminal"
-#       - name: place_of_carrier_receipt_terminal_id
-#         description: "ID of the place of carrier receipt terminal"
-#       - name: last_comment
-#         description: "Last comment"
-#       - name: last_status_update
-#         description: "Last status update"
-#       - name: inquiry_option_id
-#         description: "ID of the inquiry option"
-#       - name: is_external_quotation_number
-#         description: "Is external quotation number"
-#       - name: other_job_number
-#         description: "Other job number"
-#       - name: tsp_1_id
-#         description: "ID of TSP 1"
-#       - name: tsp_2_id
-#         description: "ID of TSP 2"
-#       - name: current_vessel_id
-#         description: "ID of the current vessel"
-#       - name: eta_tsp1
-#         description: "ETA TSP 1"
-#       - name: etd_tsp1
-#         description: "ETD TSP 1"
-#       - name: current_voyage_number
-#         description: "Current voyage number"
-#       - name: destination_carrier_free_days
-#         description: "Destination carrier free days"
-#       - name: destination_port_free_days
-#         description: "Destination port free days"
-#       - name: origin_carrier_free_days
-#         description: "Origin carrier free days"
-#       - name: eta_tsp2
-#         description: "ETA TSP 2"
-#       - name: etd_tsp2
-#         description: "ETD TSP 2"
-#       - name: eta_initial
-#         description: "Initial ETA"
-#       - name: eta_status
-#         description: "ETA status"
-#       - name: cargo_type
-#         description: "Type of cargo"
-#       - name: linked_shipment_id
-#         description: "ID of the linked shipment"
-#       - name: movement_mode
-#         description: "Mode of movement"
-#       - name: driver_id
-#         description: "ID of the driver"
-#       - name: driver_name
-#         description: "Name of the driver"
-#       - name: driver_contact_number
-#         description: "Contact number of the driver"
-#       - name: driver_license_number
-#         description: "License number of the driver"
-#       - name: vehicle_id
-#         description: "ID of the vehicle"
-#       - name: vehicle_license_plate_number
-#         description: "License plate number of the vehicle"
-#       - name: vehicle_chassis_number
-#         description: "Chassis number of the vehicle"
-#       - name: vehicle_category
-#         description: "Category of the vehicle"
-#       - name: routing_str
-#         description: "Routing string"
-#       - name: trip_distance
-#         description: "Distance of the trip"
-#       - name: transporter_name
-#         description: "Name of the transporter"
-#       - name: isf_filed_by
-#         description: "ISF filed by"
-#       - name: letter_of_credit_number
-#         description: "Letter of credit number"
-#       - name: letter_of_credit_date
-#         description: "Date of the letter of credit"
-#       - name: customer_address_id
-#         description: "ID of the customer address"
-#       - name: weight_unit
-#         description: "Unit of weight"
-#       - name: sales_agent_id
-#         description: "ID of the sales agent"
-#       - name: collaborator_ids
-#         description: "IDs of the collaborators (array)"
-#       - name: custom_field_values
-#         description: "Custom field values (JSONB)"
-#       - name: color_code
-#         description: "Color code"
-#       - name: priority
-#         description: "Priority"
-#       - name: uuid
-#         description: "UUID"
-#       - name: sales_order_number
-#         description: "Sales order number"
-#       - name: is_cargo_ready_date_appliable
-#         description: "Is cargo ready date appliable"
-#       - name: is_purchase_order_number_appliable
-#         description: "Is purchase order number appliable"
-#       - name: is_sales_order_number_appliable
-#         description: "Is sales order number appliable"
-#       - name: cargo_ready_date
-#         description: "Cargo ready date"
-#       - name: target_shipping_date
-#         description: "Target shipping date"
-#       - name: target_delivery_date
-#         description: "Target delivery date"
-#       - name: vehicle_qty
-#         description: "Vehicle quantity"
-#       - name: split_from_order_id
-#         description: "ID of the order from which this was split"
-#       - name: link_shipment_json
-#         description: "Linked shipment JSON (JSONB)"
+models:
+  - name: shipments_model
+    description: "Table containing shipment details"
+    columns:
+      - name: id
+        description: "Primary key"
+        tests:
+          - not_null
+          - unique
+      - name: master_shipment_id
+        description: "ID of the master shipment"
+      - name: tenant_id
+        description: "ID of the tenant"
+      - name: carrier_product
+        description: "Carrier product"
+      - name: incoterms
+        description: "Incoterms"
+      - name: estimated_time_of_departure
+        description: "Estimated time of departure"
+      - name: estimated_time_of_arrival
+        description: "Estimated time of arrival"
+      - name: freight_type
+        description: "Type of freight"
+      - name: trade_type
+        description: "Type of trade"
+      - name: load_type
+        description: "Type of load"
+      - name: status
+        description: "Status of the shipment"
+      - name: shipment_type
+        description: "Type of shipment"
+      - name: service_type
+        description: "Type of service"
+      - name: total_number_of_packages
+        description: "Total number of packages"
+      - name: gross_weight
+        description: "Gross weight"
+      - name: gross_volume
+        description: "Gross volume"
+      - name: chargeable_weight
+        description: "Chargeable weight"
+      - name: created_at
+        description: "Timestamp when the record was created"
+        tests:
+          - not_null
+      - name: updated_at
+        description: "Timestamp when the record was last updated"
+        tests:
+          - not_null
+      - name: commodity_description
+        description: "Description of the commodity"
+      - name: shipment_properties
+        description: "Properties of the shipment (JSONB)"
+      - name: job_number
+        description: "Job number"
+      - name: business_type
+        description: "Type of business"
+      - name: deleted_at
+        description: "Timestamp when the record was deleted"
+      - name: accounting_status
+        description: "Accounting status"
+      - name: involved_branch_id
+        description: "ID of the involved branch"
+      - name: port_of_loading_id
+        description: "ID of the port of loading"
+      - name: port_of_discharge_id
+        description: "ID of the port of discharge"
+      - name: place_of_carrier_receipt_id
+        description: "ID of the place of carrier receipt"
+      - name: place_of_carrier_delivery_id
+        description: "ID of the place of carrier delivery"
+      - name: carrier_id
+        description: "ID of the carrier"
+      - name: house_number_sequence_id
+        description: "ID of the house number sequence"
+      - name: commodity_type
+        description: "Type of commodity"
+      - name: short_product_description
+        description: "Short description of the product"
+      - name: shipment_number
+        description: "Shipment number"
+      - name: shipment_date
+        description: "Date of shipment"
+      - name: master_job_number
+        description: "Master job number"
+      - name: charge_terms
+        description: "Charge terms (JSONB)"
+      - name: services
+        description: "Services (JSONB)"
+      - name: next_house_shipment_count
+        description: "Count of the next house shipment"
+      - name: consol_type
+        description: "Type of consolidation"
+      - name: unbilled_income_count
+        description: "Count of unbilled income"
+      - name: billed_income_count
+        description: "Count of billed income"
+      - name: unbilled_expense_count
+        description: "Count of unbilled expense"
+      - name: billed_expense_count
+        description: "Count of billed expense"
+      - name: net_weight
+        description: "Net weight"
+      - name: booking_status
+        description: "Status of the booking"
+      - name: shipment_booking_number
+        description: "Booking number of the shipment"
+      - name: next_booking_actions
+        description: "Next booking actions (array)"
+      - name: volumetric_weight
+        description: "Volumetric weight"
+      - name: document_id
+        description: "ID of the document"
+      - name: final_place_of_delivery_id
+        description: "ID of the final place of delivery"
+      - name: ocean_vessel_id
+        description: "ID of the ocean vessel"
+      - name: vessel_name
+        description: "Name of the vessel"
+      - name: voyage_number
+        description: "Voyage number"
+      - name: received_for_shipment_by_forwarder_date
+        description: "Date received for shipment by the forwarder"
+      - name: received_for_shipment_by_shipping_line_date
+        description: "Date received for shipment by the shipping line"
+      - name: shipped_on_board_date
+        description: "Date shipped on board"
+      - name: final_place_of_delivery_print
+        description: "Printed final place of delivery"
+      - name: consignee_party_name
+        description: "Name of the consignee party"
+      - name: unbilled_sell_estimates_count
+        description: "Count of unbilled sell estimates"
+      - name: billed_sell_estimates_count
+        description: "Count of billed sell estimates"
+      - name: unbilled_buy_estimates_count
+        description: "Count of unbilled buy estimates"
+      - name: billed_buy_estimates_count
+        description: "Count of billed buy estimates"
+      - name: remarks
+        description: "Remarks"
+      - name: accessible_by_branches
+        description: "Accessible by branches (array)"
+      - name: estimated_time_of_arrival_at_fpod
+        description: "Estimated time of arrival at FPOD"
+      - name: port_of_discharge_terminal_id
+        description: "ID of the port of discharge terminal"
+      - name: place_of_carrier_delivery_terminal_id
+        description: "ID of the place of carrier delivery terminal"
+      - name: cancelled_at
+        description: "Timestamp when the record was cancelled"
+      - name: cancellation_marked_by_id
+        description: "ID of the person who marked the cancellation"
+      - name: cancellation_reason
+        description: "Reason for cancellation"
+      - name: cancelled_by
+        description: "Cancelled by"
+      - name: returned_from
+        description: "Returned from"
+      - name: job_date
+        description: "Date of the job"
+      - name: job_execution_date
+        description: "Date of job execution"
+      - name: sales_agent
+        description: "Sales agent"
+      - name: customer
+        description: "Customer"
+      - name: delivery_order_number
+        description: "Delivery order number"
+      - name: ocean_transport_order_id
+        description: "ID of the ocean transport order"
+      - name: independent_house_number
+        description: "Independent house number"
+      - name: stuffing_type
+        description: "Type of stuffing"
+      - name: stuffing_location_type
+        description: "Type of stuffing location"
+      - name: stuffing_location_id
+        description: "ID of the stuffing location"
+      - name: destuffing_type
+        description: "Type of destuffing"
+      - name: movement_type
+        description: "Type of movement"
+      - name: destuffing_location_type
+        description: "Type of destuffing location"
+      - name: destuffing_location_id
+        description: "ID of the destuffing location"
+      - name: closing_remarks
+        description: "Closing remarks"
+      - name: customer_company_id
+        description: "ID of the customer company"
+      - name: quotation_number
+        description: "Quotation number"
+      - name: is_from_consol_helper
+        description: "Is from consolidation helper"
+      - name: movement_location_id
+        description: "ID of the movement location"
+      - name: actual_time_of_arrival
+        description: "Actual time of arrival"
+      - name: actual_time_of_arrival_pocd
+        description: "Actual time of arrival at POCD"
+      - name: destination_last_inward_date
+        description: "Destination last inward date"
+      - name: pocd_last_inward_date
+        description: "POCD last inward date"
+      - name: ops_pre_alert_sent_date
+        description: "Date OPS pre-alert sent"
+      - name: created_from_message_id
+        description: "ID of the message from which this record was created"
+      - name: document_dispatch_mode
+        description: "Document dispatch mode"
+      - name: document_dispatch_date
+        description: "Document dispatch date"
+      - name: courier_company_id
+        description: "ID of the courier company"
+      - name: courier_tracking_no
+        description: "Courier tracking number"
+      - name: credit_status
+        description: "Credit status"
+      - name: carting_location_id
+        description: "ID of the carting location"
+      - name: atd_pol_date
+        description: "ATD POL date"
+      - name: atd_pcr_date
+        description: "ATD PCR date"
+      - name: lfd_at_carrier
+        description: "LFD at carrier"
+      - name: lfd_at_empty_return
+        description: "LFD at empty return"
+      - name: lfd_at_pod
+        description: "LFD at POD"
+      - name: lfd_at_pocd
+        description: "LFD at POCD"
+      - name: export_manifest_no
+        description: "Export manifest number"
+      - name: last_action_status
+        description: "Status of the last action"
+      - name: next_actions
+        description: "Next actions (array)"
+      - name: forwarding_invoice_status
+        description: "Forwarding invoice status"
+      - name: estimated_time_of_arrival_at_pcd
+        description: "Estimated time of arrival at PCD"
+      - name: purchase_order_number
+        description: "Purchase order number"
+      - name: port_of_loading_terminal_id
+        description: "ID of the port of loading terminal"
+      - name: place_of_carrier_receipt_terminal_id
+        description: "ID of the place of carrier receipt terminal"
+      - name: last_comment
+        description: "Last comment"
+      - name: last_status_update
+        description: "Last status update"
+      - name: inquiry_option_id
+        description: "ID of the inquiry option"
+      - name: is_external_quotation_number
+        description: "Is external quotation number"
+      - name: other_job_number
+        description: "Other job number"
+      - name: tsp_1_id
+        description: "ID of TSP 1"
+      - name: tsp_2_id
+        description: "ID of TSP 2"
+      - name: current_vessel_id
+        description: "ID of the current vessel"
+      - name: eta_tsp1
+        description: "ETA TSP 1"
+      - name: etd_tsp1
+        description: "ETD TSP 1"
+      - name: current_voyage_number
+        description: "Current voyage number"
+      - name: destination_carrier_free_days
+        description: "Destination carrier free days"
+      - name: destination_port_free_days
+        description: "Destination port free days"
+      - name: origin_carrier_free_days
+        description: "Origin carrier free days"
+      - name: eta_tsp2
+        description: "ETA TSP 2"
+      - name: etd_tsp2
+        description: "ETD TSP 2"
+      - name: eta_initial
+        description: "Initial ETA"
+      - name: eta_status
+        description: "ETA status"
+      - name: cargo_type
+        description: "Type of cargo"
+      - name: linked_shipment_id
+        description: "ID of the linked shipment"
+      - name: movement_mode
+        description: "Mode of movement"
+      - name: driver_id
+        description: "ID of the driver"
+      - name: driver_name
+        description: "Name of the driver"
+      - name: driver_contact_number
+        description: "Contact number of the driver"
+      - name: driver_license_number
+        description: "License number of the driver"
+      - name: vehicle_id
+        description: "ID of the vehicle"
+      - name: vehicle_license_plate_number
+        description: "License plate number of the vehicle"
+      - name: vehicle_chassis_number
+        description: "Chassis number of the vehicle"
+      - name: vehicle_category
+        description: "Category of the vehicle"
+      - name: routing_str
+        description: "Routing string"
+      - name: trip_distance
+        description: "Distance of the trip"
+      - name: transporter_name
+        description: "Name of the transporter"
+      - name: isf_filed_by
+        description: "ISF filed by"
+      - name: letter_of_credit_number
+        description: "Letter of credit number"
+      - name: letter_of_credit_date
+        description: "Date of the letter of credit"
+      - name: customer_address_id
+        description: "ID of the customer address"
+      - name: weight_unit
+        description: "Unit of weight"
+      - name: sales_agent_id
+        description: "ID of the sales agent"
+      - name: collaborator_ids
+        description: "IDs of the collaborators (array)"
+      - name: custom_field_values
+        description: "Custom field values (JSONB)"
+      - name: color_code
+        description: "Color code"
+      - name: priority
+        description: "Priority"
+      - name: uuid
+        description: "UUID"
+      - name: sales_order_number
+        description: "Sales order number"
+      - name: is_cargo_ready_date_appliable
+        description: "Is cargo ready date appliable"
+      - name: is_purchase_order_number_appliable
+        description: "Is purchase order number appliable"
+      - name: is_sales_order_number_appliable
+        description: "Is sales order number appliable"
+      - name: cargo_ready_date
+        description: "Cargo ready date"
+      - name: target_shipping_date
+        description: "Target shipping date"
+      - name: target_delivery_date
+        description: "Target delivery date"
+      - name: vehicle_qty
+        description: "Vehicle quantity"
+      - name: split_from_order_id
+        description: "ID of the order from which this was split"
+      - name: link_shipment_json
+        description: "Linked shipment JSON (JSONB)"
+  - name: companies
+    description: "Table containing company details."
+    columns:
+      - name: id
+        description: "Primary key for the companies table."
+      - name: created_at
+        description: "Timestamp when the company record was created."
+      - name: updated_at
+        description: "Timestamp when the company record was last updated."
+      - name: tenant_id
+        description: "ID of the tenant the company belongs to."
+      - name: carrier_id
+        description: "ID of the carrier associated with the company."
+      - name: parent_company_id
+        description: "ID of the parent company, if any."
+      - name: registered_name
+        description: "Registered name of the company."
+      - name: entity_type
+        description: "Type of entity of the company."
+      - name: business_type
+        description: "Array of business types of the company."
+      - name: country_of_incorporation
+        description: "Country where the company is incorporated."
+      - name: date_of_incorporation
+        description: "Date when the company was incorporated."
+      - name: company_identification_number
+        description: "Identification number of the company."
+      - name: tax_registration_number
+        description: "Tax registration number of the company."
+      - name: status
+        description: "Status of the company."
+      - name: is_iata_agent
+        description: "Boolean indicating if the company is an IATA agent."
+      - name: agent_iata_code
+        description: "IATA code of the agent."
+      - name: created_by_id
+        description: "ID of the user who created the company record."
+      - name: associations
+        description: "Array of associations of the company."
+      - name: is_disabled
+        description: "Boolean indicating if the company is disabled."
+      - name: deleted_at
+        description: "Timestamp when the company record was deleted."
+      - name: is_internal_company
+        description: "Boolean indicating if the company is internal."
+      - name: merged_companies_ids
+        description: "Array of IDs of merged companies."
+      - name: company_group
+        description: "Group of the company."
+      - name: bank_link
+        description: "Bank link of the company."
+      - name: remarks
+        description: "Remarks about the company."
+      - name: tax_deduction_id
+        description: "Tax deduction ID of the company."
+      - name: global_company_account_id
+        description: "ID of the global company account."
+      - name: receivable_credit_control_type
+        description: "Type of receivable credit control."
+      - name: sales_partner_id
+        description: "ID of the sales partner."
+      - name: collaborator_ids
+        description: "Array of collaborator IDs."
+      - name: custom_field_values
+        description: "Custom field values of the company."
+      - name: company_stage
+        description: "Stage of the company."
+      - name: company_type
+        description: "Type of the company."
+      - name: last_activity
+        description: "Last activity of the company."
+      - name: last_activity_at
+        description: "Timestamp of the last activity."
+      - name: lead_owner_id
+        description: "ID of the lead owner."
+      - name: domain
+        description: "Domain of the company."
+      - name: color_code
+        description: "Color code associated with the company."
