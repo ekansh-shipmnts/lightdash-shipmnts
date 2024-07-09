@@ -12,6 +12,17 @@ sources:
       - name: branch_accounts
       - name: sales_hub_inquiries
       - name: sales_people
+      - name: analytics_ocean_transport_order_reports
+      - name: analytics_inquiry_reports
+      - name: analytics_company_reports
+      - name: analytics_booking_request_reports
+      - name: analytics_warehouse_transaction_reports
+      - name: analytics_stock_order_item_reports
+      - name: analytics_shipment_reports
+      - name: analytics_shipment_document_reports  
+      - name: analytics_shipment_custom_detail_reports
+      - name: analytics_shipment_container_reports
+      - name: analytics_product_order_reports
 
 models:
   - name: shipments_model
@@ -640,3 +651,814 @@ models:
         description: "Timestamp when the sales person was last updated."
       - name: tenant_id
         description: "ID of the tenant."
+
+  - name: analytics_booking_request_reports_model
+    description: "Table containing booking request report details."
+    columns:
+      - name: id
+        description: "Primary key for the booking request reports table."
+      - name: primary_ocean_transport_order_id
+        description: "ID of the primary ocean transport order."
+      - name: quantity_requested
+        description: "Quantity requested."
+      - name: quantity_fulfilled
+        description: "Quantity fulfilled."
+      - name: quantity_picked_up
+        description: "Quantity picked up."
+      - name: quantity_origin_port_gated_in
+        description: "Quantity gated in at origin port."
+      - name: quantity_loaded_on_vessel
+        description: "Quantity loaded on vessel."
+      - name: quantity_shutout
+        description: "Quantity shutout."
+      - name: quantity_offloaded
+        description: "Quantity offloaded."
+      - name: quantity_cancelled
+        description: "Quantity cancelled."
+      - name: commodity_description
+        description: "Description of the commodity."
+      - name: container_settings
+        description: "Settings for the container."
+      - name: container_numbers
+        description: "Container numbers."
+      - name: shipment_details
+        description: "Details of the shipment."
+      - name: house_shipment_details
+        description: "Details of the house shipment."
+      - name: shipment_document_master_details
+        description: "Master details of the shipment document."
+      - name: shipment_document_house_details
+        description: "House details of the shipment document."
+      - name: sales_person
+        description: "Sales person associated with the booking."
+      - name: allocated_booking_details
+        description: "Details of the allocated booking."
+      - name: shipper_id
+        description: "ID of the shipper."
+      - name: customer_company_id
+        description: "ID of the customer company."
+      - name: is_hazardous_cargo
+        description: "Indicates if the cargo is hazardous."
+      - name: status_text
+        description: "Status text of the booking."
+      - name: total_gross_weight
+        description: "Total gross weight of the shipment."
+      - name: carting_location_id
+        description: "ID of the carting location."
+      - name: stuffing_status
+        description: "Stuffing status of the booking."
+      - name: recent_validity_date
+        description: "Most recent validity date of the booking."
+      - name: quantity_pickup_pending
+        description: "Quantity pending pickup."
+      - name: quantity_origin_port_gate_in_pending
+        description: "Quantity pending gate-in at origin port."
+      - name: quantity_loading_pending
+        description: "Quantity pending loading."
+      - name: quantity_allocation_pending
+        description: "Quantity pending allocation."
+      - name: container_qty_and_type
+        description: "Quantity and type of containers."
+      - name: si_bl_reminder_count
+        description: "SI/BL reminder count."
+      - name: consignee_id
+        description: "ID of the consignee."
+      - name: quantity_job_creation_pending
+        description: "Quantity pending job creation."
+      - name: sales_person_id
+        description: "ID of the sales person."
+
+  - name: analytics_company_reports_model
+    description: "Table containing company report details."
+    columns:
+      - name: id
+        description: "Primary key for the company reports table."
+      - name: connection_status
+        description: "Connection status of the company."
+      - name: sales_person_ids
+        description: "IDs of the sales persons."
+      - name: contact_ids
+        description: "IDs of the contacts."
+      - name: address_ids
+        description: "IDs of the addresses."
+
+  - name: analytics_inquiry_reports_model
+    description: "Table containing inquiry report details."
+    columns:
+      - name: id
+        description: "Primary key for the inquiry reports table."
+      - name: origin_country
+        description: "Origin country of the inquiry."
+      - name: destination_country
+        description: "Destination country of the inquiry."
+      - name: commodity_description
+        description: "Description of the commodity."
+      - name: total_gross_weight
+        description: "Total gross weight of the inquiry."
+      - name: cargo_gross_volume
+        description: "Gross volume of the cargo."
+      - name: container_qty_and_type
+        description: "Quantity and type of containers."
+      - name: teu_count
+        description: "TEU count."
+      - name: container_count
+        description: "Container count."
+      - name: is_hazardous_cargo
+        description: "Indicates if the cargo is hazardous."
+      - name: is_temp_controlled
+        description: "Indicates if the cargo is temperature controlled."
+      - name: is_perishable
+        description: "Indicates if the cargo is perishable."
+      - name: has_battery
+        description: "Indicates if the cargo has battery."
+      - name: is_general
+        description: "Indicates if the cargo is general."
+      - name: total_number_of_packages
+        description: "Total number of packages."
+      - name: customer_created_on
+        description: "Timestamp when the customer was created."
+      - name: shared_with_customer_date
+        description: "Timestamp when shared with customer."
+      - name: rates_received_date
+        description: "Timestamp when rates were received."
+      - name: negotiation_date
+        description: "Timestamp of the negotiation."
+      - name: won_date
+        description: "Timestamp when the inquiry was won."
+      - name: lost_date
+        description: "Timestamp when the inquiry was lost."
+      - name: created_at
+        description: "Timestamp when the inquiry was created."
+      - name: updated_at
+        description: "Timestamp when the inquiry was last updated."
+      - name: customer_company_group
+        description: "Customer company group."
+      - name: tat_rates_received
+        description: "Turnaround time for receiving rates."
+      - name: tat_shared_with_customer
+        description: "Turnaround time for sharing with customer."
+      - name: tat_closed
+        description: "Turnaround time for closing the inquiry."
+      - name: loss_reason
+        description: "Reason for losing the inquiry."
+      - name: loss_remarks
+        description: "Remarks for losing the inquiry."
+      - name: pending_quantity
+        description: "Pending quantity."
+
+  - name: analytics_ocean_transport_order_reports_model
+    description: "Analytics report for ocean transport orders"
+    columns:
+      - name: id
+        description: "Primary key"
+      - name: pre_carriage_node_id
+        description: "Reference to pre-carriage routing node"
+      - name: port_of_loading_node_id
+        description: "Reference to port of loading routing node"
+      - name: transshipment_hop_1_node_id
+        description: "Reference to first transshipment hop routing node"
+      - name: transshipment_hop_2_node_id
+        description: "Reference to second transshipment hop routing node"
+      - name: port_of_discharge_node_id
+        description: "Reference to port of discharge routing node"
+      - name: on_carriage_node_id
+        description: "Reference to on-carriage routing node"
+      - name: estimated_time_of_arrival
+        description: "Estimated time of arrival"
+      - name: vessel_id
+        description: "Reference to the ocean vessel"
+      - name: voyage_number
+        description: "Voyage number"
+      - name: quantity_requested
+        description: "Quantity requested"
+      - name: quantity_picked_up
+        description: "Quantity picked up"
+      - name: quantity_fulfilled
+        description: "Quantity fulfilled"
+      - name: quantity_pick_up_pending
+        description: "Quantity pick-up pending"
+      - name: quantity_gate_pass_pending
+        description: "Quantity gate pass pending"
+      - name: quantity_gate_pass_confirmed
+        description: "Quantity gate pass confirmed"
+      - name: quantity_origin_port_gate_in_pending
+        description: "Quantity origin port gate-in pending"
+      - name: quantity_origin_port_gated_in
+        description: "Quantity origin port gated in"
+      - name: quantity_loading_pending
+        description: "Quantity loading pending"
+      - name: quantity_loaded_on_vessel
+        description: "Quantity loaded on vessel"
+      - name: quantity_shutout
+        description: "Quantity shutout"
+      - name: quantity_offloaded
+        description: "Quantity offloaded"
+      - name: commodity_description
+        description: "Commodity description"
+      - name: container_settings
+        description: "Container settings in JSONB format"
+      - name: sales_person
+        description: "Sales person"
+      - name: vendor_company_id
+        description: "Reference to vendor company"
+      - name: pre_carriage_location_id
+        description: "Reference to pre-carriage location"
+      - name: port_of_loading_location_id
+        description: "Reference to port of loading location"
+      - name: transshipment_hop_1_location_id
+        description: "Reference to first transshipment hop location"
+      - name: transshipment_hop_2_location_id
+        description: "Reference to second transshipment hop location"
+      - name: port_of_discharge_location_id
+        description: "Reference to port of discharge location"
+      - name: on_carriage_location_id
+        description: "Reference to on-carriage location"
+      - name: quantity_allocation_pending
+        description: "Quantity allocation pending"
+      - name: sales_person_id
+        description: "Sales person ID"
+      - name: container_qty_and_type
+        description: "Container quantity and type in JSONB format"
+  
+  - name: analytics_product_order_reports_model
+    description: "Analytics report for product orders"
+    columns:
+      - name: id
+        description: "Primary key"
+      - name: origin_country
+        description: "Country of origin"
+      - name: destination_country
+        description: "Destination country"
+      - name: shipment_details
+        description: "Details of the shipment in JSONB format"
+      - name: products
+        description: "List of products"
+      - name: container_qty_and_type
+        description: "Quantity and type of containers in JSONB format"
+      - name: container_count
+        description: "Count of containers"
+      - name: linked_shipments
+        description: "Linked shipments"
+
+  - name: analytics_warehouse_transaction_reports_model
+    description: "Analytics report for warehouse transactions"
+    columns:
+      - name: id
+        description: "Primary key"
+      - name: shipper_id
+        description: "Shipper ID"
+      - name: consignee_id
+        description: "Consignee ID"
+      - name: created_at
+        description: "Timestamp when the record was created"
+      - name: updated_at
+        description: "Timestamp when the record was last updated"
+      - name: linked_transaction
+        description: "Linked transactions in JSONB format"
+      - name: created_from_transaction
+        description: "Created from transactions in JSONB format"
+
+  - name: analytics_stock_order_item_reports_model
+    description: "Analytics report for stock order items"
+    columns:
+      - name: id
+        description: "Primary key"
+      - name: booked_by_id
+        description: "ID of the user who booked the order"
+      - name: booked_at
+        description: "Timestamp when the order was booked"
+      - name: executed_by_id
+        description: "ID of the user who executed the order"
+      - name: executed_at
+        description: "Timestamp when the order was executed"
+      - name: reserved_by_id
+        description: "ID of the user who reserved the order"
+      - name: reserved_at
+        description: "Timestamp when the order was reserved"
+      - name: shipment_detail
+        description: "Details of the shipment in JSONB format"
+      - name: awb_detail
+        description: "AWB details in JSONB format"
+
+  - name: analytics_shipment_reports_model
+    description: |
+      This model represents shipment reports data.
+      
+    columns:
+      - name: id
+        description: The primary key of the shipment report.
+        tests:
+          - unique
+      - name: mbl_type
+        description: Type of Master Bill of Lading.
+      - name: hbl_type
+        description: Type of House Bill of Lading.
+      - name: master_shipment_number
+        description: Master shipment number.
+      - name: house_shipment_number
+        description: House shipment number.
+      - name: master_shipment_date
+        description: Date of master shipment.
+        tests:
+          - not_null
+      - name: house_shipment_date
+        description: Date of house shipment.
+      - name: master_charge_terms
+        description: Charge terms for master shipment.
+      - name: house_charge_terms
+        description: Charge terms for house shipment.
+      - name: master_document_status
+        description: Status of master shipment documents.
+      - name: house_document_status
+        description: Status of house shipment documents.
+      - name: shipper_id
+        description: ID of the shipper.
+        tests:
+          - unique
+      - name: consignee_id
+        description: ID of the consignee.
+      - name: origin_agent_id
+        description: ID of the origin agent.
+      - name: destination_agent_id
+        description: ID of the destination agent.
+      - name: subagent_id
+        description: ID of the sub-agent.
+      - name: overseas_agent_id
+        description: ID of the overseas agent.
+      - name: origin_clearance_agent_id
+        description: ID of the origin clearance agent.
+      - name: origin_transport_agent_id
+        description: ID of the origin transport agent.
+      - name: origin_fumigation_agent_id
+        description: ID of the origin fumigation agent.
+      - name: origin_palletization_agent_id
+        description: ID of the origin palletization agent.
+      - name: destination_clearance_agent_id
+        description: ID of the destination clearance agent.
+      - name: destination_transport_agent_id
+        description: ID of the destination transport agent.
+      - name: origin_clearance_date
+        description: Date of origin clearance.
+      - name: igm_number
+        description: IGM (Import General Manifest) number.
+      - name: igm_date
+        description: Date of IGM.
+      - name: bank_release_order_date
+        description: Date of bank release order.
+      - name: container_qty_and_type
+        description: Quantity and type of containers.
+      - name: container_numbers
+        description: List of container numbers.
+      - name: loaded_at_container_count
+        description: Count of containers loaded at a certain date.
+      - name: loaded_at_container_date
+        description: Date when containers were loaded.
+      - name: created_by_id
+        description: ID of the user who created the shipment report.
+      - name: shipment_invoices_details
+        description: Details of shipment invoices.
+      - name: export_custom_details
+        description: Details of export customs.
+      - name: import_custom_details
+        description: Details of import customs.
+      - name: booking_request_numbers
+        description: List of booking request numbers.
+      - name: last_leg_voyage_number
+        description: Voyage number of the last leg.
+      - name: port_of_discharge_country
+        description: Country of port of discharge.
+      - name: booking_confirmed_date
+        description: Date when booking was confirmed.
+      - name: container_picked_up_date
+        description: Date when containers were picked up.
+      - name: cargo_received_date
+        description: Date when cargo was received.
+      - name: cargo_departed_date
+        description: Date when cargo departed.
+      - name: pre_alert_received_date
+        description: Date when pre-alert was received.
+      - name: agent_cn_dn_received_date
+        description: Date when agent CN/DN was received.
+      - name: freight_certificate_sent_date
+        description: Date when freight certificate was sent.
+      - name: cgm_filed_date
+        description: Date when CGM (Container General Manifest) was filed.
+      - name: can_sent_date
+        description: Date when CAN (Container Arrival Notice) was sent.
+      - name: manifest_docs_sent_date
+        description: Date when manifest documents were sent.
+      - name: manifest_filed_date
+        description: Date when manifest was filed.
+      - name: arrived_at_pod_date
+        description: Date when arrived at POD (Port of Discharge).
+      - name: inland_manifest_filed_date
+        description: Date when inland manifest was filed.
+      - name: arrived_at_pcd_date
+        description: Date when arrived at PCD (Port of Cargo Delivery).
+      - name: cargo_ready_for_delivery_date
+        description: Date when cargo was ready for delivery.
+      - name: cargo_picked_up_for_delivery_date
+        description: Date when cargo was picked up for delivery.
+      - name: cargo_delivery_done_date
+        description: Date when cargo delivery was completed.
+      - name: proof_of_delivery_received_date
+        description: Date when proof of delivery was received.
+      - name: cargo_picked_up_date
+        description: Date when cargo was picked up.
+      - name: carting_order_confirmed_date
+        description: Date when carting order was confirmed.
+      - name: carting_done_date
+        description: Date when carting was completed.
+      - name: cargo_handover_date
+        description: Date when cargo handover occurred.
+      - name: cargo_accepted_date
+        description: Date when cargo was accepted.
+      - name: invoice_requested_date
+        description: Date when invoice was requested.
+      - name: invoice_received_date
+        description: Date when invoice was received.
+      - name: prioritized_for_payment_date
+        description: Date when shipment was prioritized for payment.
+      - name: invoice_paid_date
+        description: Date when invoice was paid.
+      - name: carrier_released_date
+        description: Date when carrier released the shipment.
+      - name: do_sent_date
+        description: Date when Delivery Order (DO) was sent.
+      - name: docs_submitted_to_sl_date
+        description: Date when documents were submitted to shipping line.
+      - name: inwarded_at_pcd_date
+        description: Date when inwarded at PCD (Port of Cargo Delivery).
+      - name: inwarded_at_pod_date
+        description: Date when inwarded at POD (Port of Discharge).
+      - name: icd_igm_number
+        description: ICD (Inland Container Depot) IGM number.
+      - name: icd_igm_date
+        description: Date of ICD IGM.
+      - name: si_cutoff_date
+        description: SI (Shipping Instruction) cutoff date.
+      - name: carrier_booking_number
+        description: Carrier booking number.
+      - name: consol_job_number
+        description: Consolidated job number.
+      - name: isf_filing_date
+        description: ISF (Importer Security Filing) filing date.
+      - name: isf_filing_no
+        description: ISF filing number.
+      - name: quantity_pickup_pending
+        description: Quantity pending for pickup.
+      - name: container_status
+        description: Status of containers.
+      - name: origin_customs_status
+        description: Customs status at origin.
+      - name: destination_customs_status
+        description: Customs status at destination.
+      - name: teu_count
+        description: TEU (Twenty-foot Equivalent Unit) count.
+      - name: container_count
+        description: Count of containers.
+      - name: port_of_loading_country
+        description: Country of port of loading.
+      - name: shipping_line_service_type
+        description: Service type of shipping line.
+      - name: movement_confirmed_by_customer_date
+        description: Date when movement was confirmed by customer.
+      - name: movement_confirmed_by_carrier_date
+        description: Date when movement was confirmed by carrier.
+      - name: si_reminder_sent_to_customer_date
+        description: Date when SI reminder was sent to customer.
+      - name: si_received_from_customer_date
+        description: Date when SI was received from customer.
+      - name: do_no
+        description: Delivery Order (DO) number.
+      - name: do_validity_date
+        description: Validity date of Delivery Order (DO).
+      - name: invoice_number
+        description: Invoice number.
+      - name: invoice_amount
+        description: Amount on the invoice.
+      - name: original_docs_received_date
+        description: Date when original documents were received.
+      - name: freight_forwarding_agent_id
+        description: ID of the freight forwarding agent.
+      - name: booking_validity_date
+        description: Validity date of booking.
+      - name: gate_close_cutoff
+        description: Cutoff date for gate close.
+      - name: delivery_address_id
+        description: ID of the delivery address.
+      - name: delivery_address_party_address_id
+        description: ID of the party's delivery address.
+      - name: ordered_quantity
+        description: Quantity ordered.
+      - name: allocated_quantity
+        description: Quantity allocated.
+      - name: allocation_pending_quantity
+        description: Pending allocation quantity.
+      - name: origin_icd_gate_in_date
+        description: Date of origin ICD gate in.
+      - name: origin_icd_gate_out_date
+        description: Date of origin ICD gate out.
+      - name: pol_gate_in_date
+        description: Date of POL (Port of Loading) gate in.
+      - name: loaded_on_vessel_date
+        description: Date when loaded on vessel.
+      - name: vessel_departed_date
+        description: Date when vessel departed.
+      - name: discharged_from_vessel_date
+        description: Date when discharged from vessel.
+      - name: pod_gate_out_date
+        description: Date of POD (Port of Discharge) gate out.
+      - name: destination_icd_gate_in_date
+        description: Date of destination ICD gate in.
+      - name: destination_icd_gate_out_date
+        description: Date of destination ICD gate out.
+      - name: empty_returned_date
+        description: Date when empty containers were returned.
+      - name: all_container_status
+        description: Status of all containers.
+      - name: freight_certificate_received_date
+        description: Date when freight certificate was received.
+      - name: can_received_date
+        description: Date when CAN (Container Arrival Notice) was received.
+      - name: do_received_date
+        description: Date when Delivery Order (DO) was received.
+      - name: seller_id
+        description: ID of the seller.
+      - name: buyer_id
+        description: ID of the buyer.
+      - name: house_eawb_status
+        description: Status of house e-AWB (electronic Air Waybill).
+      - name: master_eawb_status
+        description: Status of master e-AWB (electronic Air Waybill).
+      - name: operation_completed_date
+        description: Date when operation was completed.
+      - name: cy_cutoff_date
+        description: Cutoff date for CY (Container Yard).
+      - name: booking_date
+        description: Date of booking.
+      - name: document_cutoff_date
+        description: Document cutoff date.
+      - name: manufacturer_id
+        description: ID of the manufacturer.
+      - name: order_details
+        description: Details of the order.
+
+  - name: analytics_shipment_document_reports_model
+    description: |
+      This model represents shipment document reports data.
+      
+    columns:
+      - name: id
+        description: The primary key of the shipment document report.
+        tests:
+          - unique
+      - name: create_draft_by_id
+        description: ID of the user who created the draft.
+      - name: create_draft_at
+        description: Timestamp when the draft was created.
+      - name: draft_approved_by_id
+        description: ID of the user who approved the draft.
+      - name: draft_approved_at
+        description: Timestamp when the draft was approved.
+      - name: executed_by_id
+        description: ID of the user who executed the document.
+      - name: executed_at
+        description: Timestamp when the document was executed.
+      - name: document_deleted_by_id
+        description: ID of the user who deleted the document.
+      - name: document_deleted_at
+        description: Timestamp when the document was deleted.
+      - name: document_cancelled_by_id
+        description: ID of the user who cancelled the document.
+      - name: document_cancelled_at
+        description: Timestamp when the document was cancelled.
+      - name: given_to_customer_by_id
+        description: ID of the user who gave the document to the customer.
+      - name: given_to_customer_at
+        description: Timestamp when the document was given to the customer.
+      - name: surrendered_at_origin_by_id
+        description: ID of the user who surrendered the document at origin.
+      - name: surrendered_at_origin_at
+        description: Timestamp when the document was surrendered at origin.
+      - name: received_at_destination_by_id
+        description: ID of the user who received the document at destination.
+      - name: received_at_destination_at
+        description: Timestamp when the document was received at destination.
+      - name: handover_set_printed_by_id
+        description: ID of the user who printed the handover set.
+      - name: shipper_id
+        description: ID of the shipper associated with the document.
+      - name: consignee_id
+        description: ID of the consignee associated with the document.
+      - name: hbl_bank_guarantee_email_date
+        description: Date of HBL (House Bill of Lading) bank guarantee email.
+      - name: delay_in_release
+        description: Delay in document release.
+      - name: notify_party_1_id
+        description: ID of the first notify party.
+      - name: first_draft_shared_at
+        description: Timestamp when the first draft was shared.
+      - name: received_by_shipper_at
+        description: Timestamp when the document was received by the shipper.
+      - name: si_filed_at
+        description: Timestamp when SI (Shipping Instruction) was filed.
+      - name: draft_received_at
+        description: Timestamp when the draft was received.
+      - name: bl_audited_at
+        description: Timestamp when BL (Bill of Lading) was audited.
+
+  - name: analytics_shipment_custom_detail_reports_model
+    description: |
+      This model represents custom detail reports for shipments.
+      
+    columns:
+      - name: id
+        description: The primary key of the shipment custom detail report.
+        tests:
+          - unique
+      - name: checklist_created_received_date
+        description: Date when the checklist was created or received.
+      - name: checklist_approved_date
+        description: Date when the checklist was approved.
+      - name: custom_entry_filed_date
+        description: Date when the custom entry was filed.
+      - name: appraisal_done_date
+        description: Date when the appraisal was done.
+      - name: assessment_done_date
+        description: Date when the assessment was done.
+      - name: examination_done_date
+        description: Date when the examination was done.
+      - name: duty_received_date
+        description: Date when the duty was received.
+      - name: duty_paid_date
+        description: Date when the duty was paid.
+      - name: customs_released_date
+        description: Date when customs released the shipment.
+      - name: stuffing_order_released
+        description: Date when the stuffing order was released.
+      - name: icd_egm_filed_date
+        description: Date when ICD (Inland Container Depot) EGM (Export General Manifest) was filed.
+      - name: egm_filed_date
+        description: Date when EGM (Export General Manifest) was filed.
+      - name: drawback_processed_date
+        description: Date when drawback was processed.
+      - name: igst_refund_processed_date
+        description: Date when IGST (Integrated Goods and Services Tax) refund was processed.
+      - name: brc_closed_date
+        description: Date when BRC (Bank Realization Certificate) was closed.
+
+  - name: analytics_shipment_container_reports_model
+    description: |
+      This model represents container reports for shipments.
+      
+    columns:
+      - name: id
+        description: The primary key of the shipment container report.
+        tests:
+          - unique
+      - name: primary_ocean_transport_order_id
+        description: ID of the primary ocean transport order associated with the shipment container.
+      - name: shipment_details
+        description: Details of the shipment.
+      - name: cancelled_shipment_details
+        description: Details of cancelled shipments.
+      - name: transporter_company_id
+        description: ID of the transporter company handling the shipment.
+      - name: empty_picked_up_vehicle_number
+        description: Vehicle number for picking up empty containers.
+      - name: pre_carriage_icd_gate_out_wagon_number
+        description: Wagon number for pre-carriage ICD gate-out.
+      - name: empty_picked_up_driver_contact
+        description: Contact details of the driver picking up empty containers.
+      - name: empty_picked_up_date
+        description: Date when empty containers were picked up.
+      - name: origin_factory_gate_in_date
+        description: Date when containers arrived at the origin factory gate.
+      - name: buffer_gate_in_date
+        description: Date when containers arrived at the buffer gate.
+      - name: origin_empty_delivery_location_id
+        description: ID of the location where empty containers were delivered originally.
+      - name: empty_return_cut_off
+        description: Cut-off date for returning empty containers.
+      - name: si_bl_reminders_count
+        description: Count of SI/BL (Shipping Instruction/Bill of Lading) reminders.
+      - name: buffer_location_node_id
+        description: Node ID of the buffer location.
+      - name: is_hazardous_container
+        description: Indicates if the container is hazardous.
+      - name: gate_pass_status
+        description: Status of the gate pass.
+      - name: current_location_node_id
+        description: Node ID of the current location of the container.
+      - name: buffer_location_id
+        description: ID of the buffer location.
+      - name: current_location_id
+        description: ID of the current location of the container.
+      - name: origin_factory_gate_out_date
+        description: Date when containers departed from the origin factory gate.
+      - name: buffer_gate_out_date
+        description: Date when containers departed from the buffer gate.
+      - name: port_of_loading_gate_in_date
+        description: Date when containers arrived at the port of loading gate.
+      - name: empty_pickup_location_id
+        description: ID of the location where empty containers were picked up.
+      - name: origin_factory_location_id
+        description: ID of the origin factory location.
+      - name: origin_cfs_location_id
+        description: ID of the origin CFS (Container Freight Station) location.
+      - name: pre_carriage_icd_location_id
+        description: ID of the pre-carriage ICD location.
+      - name: port_of_loading_location_id
+        description: ID of the port of loading location.
+      - name: trans_shipment_location_id
+        description: ID of the trans-shipment location.
+      - name: port_of_discharge_location_id
+        description: ID of the port of discharge location.
+      - name: on_carriage_icd_location_id
+        description: ID of the on-carriage ICD location.
+      - name: destination_cfs_location_id
+        description: ID of the destination CFS location.
+      - name: destination_factory_location_id
+        description: ID of the destination factory location.
+      - name: destination_empty_delivery_location_id
+        description: ID of the destination empty delivery location.
+      - name: stuffed_date
+        description: Date when containers were stuffed.
+      - name: origin_factory_gate_pass_filed_date
+        description: Date when gate pass was filed at the origin factory.
+      - name: origin_cfs_gate_in_date
+        description: Date when containers arrived at the origin CFS gate.
+      - name: origin_cfs_gate_out_date
+        description: Date when containers departed from the origin CFS gate.
+      - name: pre_carriage_icd_gate_in_date
+        description: Date when containers arrived at the pre-carriage ICD gate.
+      - name: pre_carriage_icd_gate_out_date
+        description: Date when containers departed from the pre-carriage ICD gate.
+      - name: port_of_loading_gate_pass_confirmed_date
+        description: Date when gate pass was confirmed at the port of loading.
+      - name: documents_handed_over_to_carrier_date
+        description: Date when documents were handed over to the carrier.
+      - name: port_of_loading_loaded_date
+        description: Date when containers were loaded at the port of loading.
+      - name: port_of_discharge_discharge_date
+        description: Date when containers were discharged at the port of discharge.
+      - name: port_of_discharge_gate_pass_confirmed_date
+        description: Date when gate pass was confirmed at the port of discharge.
+      - name: port_of_discharge_gate_out_date
+        description: Date when containers departed from the port of discharge gate.
+      - name: destuffed_date
+        description: Date when containers were destuffed.
+      - name: on_carriage_icd_gate_in_date
+        description: Date when containers arrived at the on-carriage ICD gate.
+      - name: on_carriage_icd_gate_out_date
+        description: Date when containers departed from the on-carriage ICD gate.
+      - name: destination_cfs_gate_in_date
+        description: Date when containers arrived at the destination CFS gate.
+      - name: destination_cfs_gate_out_date
+        description: Date when containers departed from the destination CFS gate.
+      - name: destination_factory_gate_pass_filed_date
+        description: Date when gate pass was filed at the destination factory.
+      - name: destination_factory_gate_in_date
+        description: Date when containers arrived at the destination factory gate.
+      - name: destination_factory_gate_out_date
+        description: Date when containers departed from the destination factory gate.
+      - name: destination_empty_to_carrier_date
+        description: Date when empty containers were handed over to the carrier at the destination.
+      - name: origin_empty_to_carrier_date
+        description: Date when empty containers were handed over to the carrier at the origin.
+      - name: offloaded_date
+        description: Date when containers were offloaded.
+      - name: routing_updated_at
+        description: Date when routing information was last updated.
+      - name: routing_updated_by
+        description: ID of the user who last updated routing information.
+      - name: routing_updated_reason
+        description: Reason for the last routing information update.
+      - name: port_of_discharge_gate_out_vehicle_number
+        description: Vehicle number at the port of discharge gate out.
+      - name: port_of_discharge_gate_out_driver_contact
+        description: Contact details of the driver at the port of discharge gate out.
+      - name: port_of_discharge_gate_out_wagon_number
+        description: Wagon number at the port of discharge gate out.
+      - name: port_of_discharge_gate_out_train_number
+        description: Train number at the port of discharge gate out.
+      - name: pre_carriage_icd_gate_out_vehicle_number
+        description: Vehicle number at the pre-carriage ICD gate out.
+      - name: pre_carriage_icd_gate_out_driver_contact
+        description: Contact details of the driver at the pre-carriage ICD gate out.
+      - name: pre_carriage_icd_gate_out_train_number
+        description: Train number at the pre-carriage ICD gate out.
+      - name: on_carriage_icd_gate_out_driver_contact
+        description: Contact details of the driver at the on-carriage ICD gate out.
+      - name: on_carriage_icd_gate_out_vehicle_number
+        description: Vehicle number at the on-carriage ICD gate out.
+      - name: destination_cfs_gate_out_driver_contact
+        description: Contact details of the driver at the destination CFS gate out.
+      - name: destination_cfs_gate_out_vehicle_number
+        description: Vehicle number at the destination CFS gate out.
+      - name: late_port_gated_in
+        description: Indicates if the port was gated in late.
+      - name: origin_factory_gate_out_detention_amount
+        description: Detention amount for containers at the origin factory gate out.
+
