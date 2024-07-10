@@ -35,9 +35,9 @@ models:
         - join: locations_model
           label: 'POL'
           sql_on: ${locations_model.id} = ${shipments_model.port_of_loading_id}
-        - join: locations_model
+        - join: locations_model as lm
           label: 'POD'
-          sql_on: ${locations_model.id} = ${shipments_model.port_of_discharge_id}
+          sql_on: ${lm.id} = ${shipments_model.port_of_discharge_id}
         - join: carriers_model
           label: 'Carriers'
           sql_on: ${carriers_model.id} = ${shipments_model.carrier_id}
