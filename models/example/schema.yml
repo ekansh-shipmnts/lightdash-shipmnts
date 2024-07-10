@@ -607,6 +607,12 @@ models:
         - join: sales_people_model
           label: 'Sales Hub Inquiries with Sales People'
           sql_on: ${sales_people_model.id} = ${sales_hub_inquiries_model.sales_person_id}
+        - join: companies_model
+          label: 'POD'
+          sql_on: ${companies_model.id} = ${sales_hub_inquiries_model.customer_company_id}
+        - join: company_accounts_model
+          label: 'Tenants'
+          sql_on: ${company_accounts_model.id} = ${sales_hub_inquiries_model.tenant_id}
     columns:
       - name: id
         description: "Primary key for the sales hub inquiries table."
