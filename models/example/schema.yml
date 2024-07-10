@@ -23,10 +23,27 @@ sources:
       - name: analytics_shipment_custom_detail_reports
       - name: analytics_shipment_container_reports
       - name: analytics_product_order_reports
+      - name: locations
+      - name: carriers
+      - name: company_accounts
 
 models:
   - name: shipments_model
     description: "Table containing shipment details"
+    meta:
+      joins: 
+        - join: locations_model
+          label: 'POL'
+          sql_on: ${locations_model.id} = ${shipments_model.port_of_loading_id}
+        - join: carriers_model
+          label: 'POD'
+          sql_on: ${carriers_model.id} = ${shipments_model.carrier_id}
+        - join: sales_people_model
+          label: 'Sales People'
+          sql_on: ${sales_people_model.id} = ${shipments_model.sales_agent_id}
+        - join: company_accounts_model
+          label: 'Tenants'
+          sql_on: ${company_accounts_model.id} = ${shipments_model.tenant_id}
     columns:
       - name: id
         description: "Primary key"
@@ -1459,4 +1476,169 @@ models:
         description: Indicates if the port was gated in late.
       - name: origin_factory_gate_out_detention_amount
         description: Detention amount for containers at the origin factory gate out.
+
+  - name: locations_model
+    description: "This table contains information about various locations including city, country, and other details."
+    columns:
+      - name: id
+        description: "Primary key of the location."
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: "Name of the location."
+      - name: city
+        description: "City where the location is situated."
+      - name: country
+        description: "Country where the location is situated."
+      - name: country_code
+        description: "Code of the country."
+      - name: latlong
+        description: "Latitude and longitude of the location."
+      - name: type
+        description: "Type of the location."
+      - name: unlocode
+        description: "UN/LOCODE of the location."
+      - name: iata_code
+        description: "IATA code of the location."
+      - name: search_string
+        description: "Search string for the location."
+      - name: created_at
+        description: "Timestamp when the location was created."
+        tests:
+          - not_null
+      - name: updated_at
+        description: "Timestamp when the location was last updated."
+        tests:
+          - not_null
+      - name: functions
+        description: "Functions of the location."
+      - name: address
+        description: "Address of the location."
+      - name: customs_code
+        description: "Customs code of the location."
+      - name: parent_id
+        description: "ID of the parent location."
+      - name: is_customs_location
+        description: "Indicates if the location is a customs location."
+      - name: city_code
+        description: "Code of the city."
+      - name: state
+        description: "State where the location is situated."
+      - name: state_code
+        description: "Code of the state."
+      - name: disabled
+        description: "Indicates if the location is disabled."
+      - name: city_id
+        description: "ID of the city location."
+        tests:
+          - relationships:
+              to: ref('locations')
+              field: id
+
+  - name: carriers_model
+    description: "This table contains information about carriers including type, codes, and other details."
+    columns:
+      - name: id
+        description: "Primary key of the carrier."
+        tests:
+          - unique
+          - not_null
+      - name: carrier_type
+        description: "Type of the carrier."
+      - name: name
+        description: "Name of the carrier."
+      - name: standard_alpha_carrier_code
+        description: "Standard alpha carrier code."
+      - name: iata_carrier_code
+        description: "IATA carrier code."
+      - name: iata_awb_prefix
+        description: "IATA AWB prefix."
+      - name: default_address
+        description: "Default address of the carrier."
+      - name: created_at
+        description: "Timestamp when the carrier was created."
+        tests:
+          - not_null
+      - name: updated_at
+        description: "Timestamp when the carrier was last updated."
+        tests:
+          - not_null
+      - name: meta_information
+        description: "Meta information of the carrier."
+      - name: short_code
+        description: "Short code of the carrier."
+
+  - name: company_accounts_model
+    description: "This table contains information about company accounts including domain name, website, and other details."
+    columns:
+      - name: id
+        description: "Primary key of the company account."
+        tests:
+          - unique
+          - not_null
+      - name: created_at
+        description: "Timestamp when the company account was created."
+        tests:
+          - not_null
+      - name: updated_at
+        description: "Timestamp when the company account was last updated."
+        tests:
+          - not_null
+      - name: domain_name
+        description: "Domain name of the company account."
+      - name: website
+        description: "Website of the company account."
+      - name: registered_name
+        description: "Registered name of the company account."
+      - name: display_name
+        description: "Display name of the company account."
+      - name: entity_type
+        description: "Entity type of the company account."
+      - name: business_type
+        description: "Business types of the company account."
+      - name: country_of_incorporation
+        description: "Country of incorporation of the company account."
+      - name: default_currency
+        description: "Default currency of the company account."
+      - name: default_weight_unit
+        description: "Default weight unit of the company account."
+      - name: default_volume_unit
+        description: "Default volume unit of the company account."
+      - name: company_identification_number
+        description: "Company identification number."
+      - name: tax_registration_number
+        description: "Tax registration number."
+      - name: is_iata_agent
+        description: "Indicates if the company account is an IATA agent."
+      - name: agent_iata_code
+        description: "IATA code of the agent."
+      - name: associations
+        description: "Associations of the company account."
+      - name: erp_auth_token
+        description: "ERP authentication token."
+      - name: subdomain
+        description: "Subdomain of the company account."
+      - name: default_company_id
+        description: "ID of the default company."
+      - name: features
+        description: "Features of the company account."
+      - name: timezone
+        description: "Timezone of the company account."
+      - name: tracking_auth_token
+        description: "Tracking authentication token."
+      - name: disabled
+        description: "Indicates if the company account is disabled."
+      - name: api_key
+        description: "API key of the company account."
+      - name: primary_business
+        description: "Primary business of the company account."
+      - name: status
+        description: "Status of the company account."
+      - name: direct_customer
+        description: "Indicates if the company account is a direct customer."
+      - name: regulatory_details
+        description: "Regulatory details of the company account."
+      - name: parent_id
+        description: "Parent ID of the company account."
 
