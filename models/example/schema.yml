@@ -612,11 +612,19 @@ models:
           label: 'Sales Hub Inquiries with Sales People'
           sql_on: ${sales_people_model.id} = ${sales_hub_inquiries_model.sales_person_id}
         - join: companies_model
-          label: 'POD'
+          label: 'Companies'
           sql_on: ${companies_model.id} = ${sales_hub_inquiries_model.customer_company_id}
         - join: company_accounts_model
           label: 'Tenants'
           sql_on: ${company_accounts_model.id} = ${sales_hub_inquiries_model.tenant_id}
+        - join: locations_model
+          label: 'POL'
+          sql_on: ${locations_model.id} = ${shipments_model.port_of_loading_id}
+        - join: locations_model
+          label: 'POD'
+          alias: lm
+          sql_on: ${lm.id} = ${shipments_model.port_of_discharge_id}
+        
     columns:
       - name: id
         description: "Primary key for the sales hub inquiries table."
